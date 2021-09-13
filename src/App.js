@@ -5,13 +5,14 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer.js';
 import Description from './components/Description';
 
+
 function App() {
   return (
     <AppWrapper>
       <NavBarWrapper>
         <NavBar />
       </NavBarWrapper>
-        <p> Logo goes here</p>
+      
         <h1> PoolBoy</h1>
         <Description />
       <FooterWrapper>

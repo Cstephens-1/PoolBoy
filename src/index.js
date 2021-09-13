@@ -7,6 +7,8 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Reviews from './components/Reviews';
 import BillPay from './components/BillPay';
 import TermsOfService from './components/TermsOfService';
+import * as FaIcons from 'react-icons/fa'
+
 
 
 ReactDOM.render(
