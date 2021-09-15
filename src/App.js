@@ -1,31 +1,121 @@
-import logo from './logo.svg';
+
 import './App.css';
 import styled from "styled-components"
 import NavBar from './components/NavBar';
-import Footer from './components/Footer.js';
-import Description from './components/Description';
+import Reviews from './components/Reviews';
+import BillPay from './components/BillPay';
+import TermsOfService from './components/TermsOfService';
+import { useEffect, useState } from 'react';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import Home from "./components/Home"
 
 
 function App() {
-  return (
-    <AppWrapper>
-      <NavBarWrapper>
-        <NavBar />
-      </NavBarWrapper>
-      
-        <h1> PoolBoy</h1>
-        <Description />
-      <FooterWrapper>
-        <Footer />
-      </FooterWrapper>
-    </AppWrapper>
-  );
+  //set states for the component arrays
+  const [reviews, setReviews] = useState([])
+  //   const[owners, setOwners] = useState([] )
+
+  //post headers
+  const headers = {
+    Accepts: "application/json",
+    "Content-Type": "application/json",
+}     
+
+// post a new review to the backend
+  function addNewRev(review){
+    console.log("This is a review", review)
+    fetch("http://localhost:9292/reviews", {
+        method: 'POST',
+        body: JSON.stringify(review),
+        headers,
+    })
+    .then(resp=>resp.json())
+    .then((json)=> setReviews([...reviews, review]))
 }
 
-export default App;
+// function DeleteReview(review){
+//   console.log("this log is in delete", review)
+//   fetch(`http://localhost:9292/reviews/${review.id}`, {
+//       method: "DELETE",
+//     })
+//       .then((r) => r.json())
+//       .then((deletedReview) => setReviews(review.id !== deletedReview.id));
+//   }
+
+
+
+
+//render the reviews
+  useEffect(()=>{
+    fetch("http://localhost:9292/reviews")
+    .then(resp=> resp.json())
+    .then(review => {
+        setReviews(review)})
+    },  []);
+
+
+
+  //fetch the owners array
+  // useEffect(()=>{
+  //   fetch("http://localhost:9292/owners")
+  //   .then(resp=> resp.json())
+  //   .then(owner => {
+  //     console.log(owner)
+  //     setOwners(owner)
+  //   })
+  // }, [])
+  
+  return (
+    <div className="App">
+        <BrowserRouter>
+          <AppWrapper>
+            <NavBar />
+            {/* <Switch > */}
+
+              <Route exact path="/reviews">
+                 <Reviews addNewRev={addNewRev} reviews={reviews} handleDelete={DeleteReview}/>
+              </Route >
+
+              <Route exact path="/paymybill" component={BillPay} />
+
+              <Route exact path="/" component={Home} />
+              
+
+            {/* </Switch> */}
+          </AppWrapper>
+        </BrowserRouter>
+    </div>
+      );
+  }
+            
+  export default App;
+
+
+
+
+
+
+
+{/* 
+
+
+        <NavBarWrapper>
+          <NavBar />
+        </NavBarWrapper>
+        
+          <h1> PoolBoy</h1>
+
+          <Description />
+
+        <FooterWrapper>
+          <Footer />
+        </FooterWrapper> */}
+
+
+
 
 const AppWrapper = styled.div`
-background-color: #c0d6d8;
+background-color: #c0d6d8 ;
 top: 0%;
 bottom: 0%;
 left: 0%;

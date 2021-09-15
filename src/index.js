@@ -14,13 +14,11 @@ import * as FaIcons from 'react-icons/fa'
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/"> */}
           <App />
-        </Route>
-      </Switch>
+        {/* </Route> */}
 
-      <Switch>
+      {/* <Switch>
         <Route exact path = "/paymybill">
           <BillPay />
         </Route>
@@ -36,7 +34,7 @@ ReactDOM.render(
         <Route exact path='/tos'>
           <TermsOfService />
         </Route>
-      </Switch>
+      </Switch> */}
 
 
     </BrowserRouter>
