@@ -33,14 +33,18 @@ function App() {
     .then((json)=> setReviews([...reviews, review]))
 }
 
-// function DeleteReview(review){
-//   console.log("this log is in delete", review)
-//   fetch(`http://localhost:9292/reviews/${review.id}`, {
-//       method: "DELETE",
-//     })
-//       .then((r) => r.json())
-//       .then((deletedReview) => setReviews(review.id !== deletedReview.id));
-//   }
+function DeleteReview(e){
+  console.log("this log is in delete method in app", e)
+  fetch(`http://localhost:9292/reviews/${e.id}`, {
+      method: "DELETE",
+    })
+      // .then((r) => r.json())
+      // .then((deletedReview) => {
+        // console.log("the review that was deleted", deletedReview);
+        let reviewsRemaining = reviews.filter(eachReview=> eachReview.id !== e.id);
+        setReviews([...reviewsRemaining])
+  // })
+}
 
 
 
