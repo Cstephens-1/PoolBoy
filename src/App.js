@@ -1,4 +1,3 @@
-
 import './App.css';
 import styled from "styled-components"
 import NavBar from './components/NavBar';
@@ -12,50 +11,44 @@ import Home from "./components/Home"
 
 function App() {
   //set states for the component arrays
-  const [reviews, setReviews] = useState([])
+  
   //   const[owners, setOwners] = useState([] )
 
   //post headers
-  const headers = {
-    Accepts: "application/json",
-    "Content-Type": "application/json",
-}     
+//   const headers = {
+//     Accepts: "application/json",
+//     "Content-Type": "application/json",
+// }     
 
-// post a new review to the backend
-  function addNewRev(review){
-    console.log("This is a review", review)
-    fetch("http://localhost:9292/reviews", {
-        method: 'POST',
-        body: JSON.stringify(review),
-        headers,
-    })
-    .then(resp=>resp.json())
-    .then((json)=> setReviews([...reviews, review]))
-}
+// // post a new review to the backend
+//   function addNewRev(review){
+//     console.log("This is a review", review)
+//     fetch("http://localhost:9292/reviews", {
+//         method: 'POST',
+//         body: JSON.stringify(review),
+//         headers,
+//     })
+//     .then(resp=>resp.json())
+//     .then((json)=> setReviews([...reviews, review]))
+// }
 
-function DeleteReview(e){
-  console.log("this log is in delete method in app", e)
-  fetch(`http://localhost:9292/reviews/${e.id}`, {
-      method: "DELETE",
-    })
-      // .then((r) => r.json())
-      // .then((deletedReview) => {
-        // console.log("the review that was deleted", deletedReview);
-        let reviewsRemaining = reviews.filter(eachReview=> eachReview.id !== e.id);
-        setReviews([...reviewsRemaining])
-  // })
-}
-
-
+// function DeleteReview(e){
+//   console.log("this log is in delete method in app", e)
+//   fetch(`http://localhost:9292/reviews/${e.id}`, {
+//       method: "DELETE",
+//     })
+//       // .then((r) => r.json())
+//       // .then((deletedReview) => {
+//         // console.log("the review that was deleted", deletedReview);
+//         let reviewsRemaining = reviews.filter(eachReview=> eachReview.id !== e.id);
+//         setReviews([...reviewsRemaining])
+//   // })
+// }
 
 
-//render the reviews
-  useEffect(()=>{
-    fetch("http://localhost:9292/reviews")
-    .then(resp=> resp.json())
-    .then(review => {
-        setReviews(review)})
-    },  []);
+
+
+
 
 
 
@@ -77,7 +70,8 @@ function DeleteReview(e){
             {/* <Switch > */}
 
               <Route exact path="/reviews">
-                 <Reviews addNewRev={addNewRev} reviews={reviews} handleDelete={DeleteReview}/>
+                 <Reviews />
+                 {/* addNewRev={addNewRev} reviews={reviews} handleDelete={DeleteReview} */}
               </Route >
 
               <Route exact path="/paymybill" component={BillPay} />
@@ -93,27 +87,6 @@ function DeleteReview(e){
   }
             
   export default App;
-
-
-
-
-
-
-
-{/* 
-
-
-        <NavBarWrapper>
-          <NavBar />
-        </NavBarWrapper>
-        
-          <h1> PoolBoy</h1>
-
-          <Description />
-
-        <FooterWrapper>
-          <Footer />
-        </FooterWrapper> */}
 
 
 
