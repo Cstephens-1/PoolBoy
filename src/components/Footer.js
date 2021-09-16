@@ -9,68 +9,30 @@ function Footer(){
         <FooterLayout>
         
             <AboutSection>
-
                 <h2>About Us</h2>
-
-                <LinkWrapper>
-                    <Link to='/'>Schedule your next cleaning</Link>
-                </LinkWrapper>
-
-                <LinkWrapper>
-                    <Link to='/'>Testimonials</Link>
-                </LinkWrapper>
-
-                <LinkWrapper>
-                    <Link to='/'>Careers</Link>
-                </LinkWrapper>
-
-                <LinkWrapper>
-                    <Link to='/'>Investors</Link>
-                </LinkWrapper>
-
-
-                <LinkWrapper>
-                    <Link to='/tos'>Terms of Service</Link>
-                </LinkWrapper>
+                <NavLink path="/">Schedule your next cleaning</NavLink>
+                {/* <NavLink path="/">Testimonials</NavLink> */}
+                
+                <NavLink path="/">Investors</NavLink>
+                <NavLink path="/tos">TermsOfService</NavLink>
             </AboutSection>
         
          
 
             <ContactSection>
-
                 <h2>Contact Us</h2>
-
-                <LinkWrapper>
-                    <Link to='/'>Contact</Link>
-                </LinkWrapper>
-
-                <LinkWrapper>
-                    <Link to='/'>Support</Link>
-                </LinkWrapper>
-                
+                <NavLink path="/">Contact</NavLink>
+                <NavLink path="/">Support</NavLink>
+                <NavLink path="/">Career</NavLink>
             </ContactSection>
        
 
             <SocialMediaSection>
-
-                <h2>Social Media</h2>
-
-                <LinkWrapper>
-                    <Link to='/'>Facebook</Link>
-                </LinkWrapper>
-
-                <LinkWrapper>
-                    <Link to='/'>Instagram</Link>
-                </LinkWrapper>
-
-                <LinkWrapper>
-                    <Link to='/'>Youtube</Link>
-                </LinkWrapper>
-
-                <LinkWrapper>
-                    <Link to='/'>Twitter</Link>
-                </LinkWrapper>
-
+            <h2>Social Media</h2>
+               <NavLink path="/">FaceBook</NavLink>
+               <NavLink path="/">Instagram</NavLink>
+               {/* <NavLink path="/">YouTube</NavLink> */}
+               <NavLink path="/">Twitter</NavLink>
             </SocialMediaSection>
 
         </FooterLayout>
@@ -79,8 +41,10 @@ function Footer(){
 
 export default Footer
 
-const LinkWrapper = styled.div`
-    margin: 8px;
+const NavLink = styled(Link)`
+    margin: 8x;
+    text-decoration: none;
+    color: white;
     `
     const FooterLayout = styled.div`
         background-color: #242424;
@@ -89,36 +53,49 @@ const LinkWrapper = styled.div`
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        vertical-align: bo;
+        position: absolute;
+         left: 0%;
+        right: 0%;
+        /* bottom: 0%; */
     `
 
 const AboutSection = styled.div`
-    background-color: green;
-    width: 20%;
+    width: 30%;
     max-width: 2000px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-right: 15px;
+    /* background-color: white; */
+    color: white;
+    margin-left: 10px;
     left: 0;
+    padding-bottom: 10px;
+    top: 0;
 `
 
 const ContactSection = styled.div`
-    background-color: blue;
-    width: 20%;
+   width: 20%;
     max-width: 2000px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    /* background-color: white; */
+    color: white;
     margin-left: 10px;
     margin-right: 10px;
+    padding-bottom: 10px;
 `
 
 
 const SocialMediaSection = styled.div`
  width: 20%;
     max-width: 2000px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    background-color: white;
-    color: black;
+    /* background-color: white; */
+    color: white;
     margin-left: 10px;
+    padding-bottom: 10px;
+    /* position: flex; */
 `

@@ -3,40 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
-import Reviews from './components/Reviews';
-import BillPay from './components/BillPay';
-import TermsOfService from './components/TermsOfService';
-import * as FaIcons from 'react-icons/fa'
-
-
+import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-        {/* <Route exact path="/"> */}
-          <App />
-        {/* </Route> */}
-
-      {/* <Switch>
-        <Route exact path = "/paymybill">
-          <BillPay />
-        </Route>
-      </Switch>
-
-      <Switch>
-        <Route exact path="/reviews">
-          <Reviews />
-        </Route>
-      </Switch>
-
-      <Switch>
-        <Route exact path='/tos'>
-          <TermsOfService />
-        </Route>
-      </Switch> */}
-
-
+      <App />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -4,82 +4,49 @@ import NavBar from './components/NavBar';
 import Reviews from './components/Reviews';
 import BillPay from './components/BillPay';
 import TermsOfService from './components/TermsOfService';
-import { useEffect, useState } from 'react';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Home from "./components/Home"
+import { useEffect, useState } from "react"
+
 
 
 function App() {
-  //set states for the component arrays
+
+  const [owners, setOwners] = useState([])
   
-  //   const[owners, setOwners] = useState([] )
+  // const [user, setUser]= useState([owner[0]].name)
 
-  //post headers
-//   const headers = {
-//     Accepts: "application/json",
-//     "Content-Type": "application/json",
-// }     
-
-// // post a new review to the backend
-//   function addNewRev(review){
-//     console.log("This is a review", review)
-//     fetch("http://localhost:9292/reviews", {
-//         method: 'POST',
-//         body: JSON.stringify(review),
-//         headers,
-//     })
-//     .then(resp=>resp.json())
-//     .then((json)=> setReviews([...reviews, review]))
-// }
-
-// function DeleteReview(e){
-//   console.log("this log is in delete method in app", e)
-//   fetch(`http://localhost:9292/reviews/${e.id}`, {
-//       method: "DELETE",
-//     })
-//       // .then((r) => r.json())
-//       // .then((deletedReview) => {
-//         // console.log("the review that was deleted", deletedReview);
-//         let reviewsRemaining = reviews.filter(eachReview=> eachReview.id !== e.id);
-//         setReviews([...reviewsRemaining])
-//   // })
-// }
+  //get the list of owners
+  useEffect(()=>{
+      fetch("http://localhost:9292/owners")
+      .then(resp=>resp.json())
+      .then(each_owner=> setOwners(each_owner))
+  }, [])
 
 
 
+let user = owners[0]
+console.log(user)
 
-
-
-
-
-  //fetch the owners array
-  // useEffect(()=>{
-  //   fetch("http://localhost:9292/owners")
-  //   .then(resp=> resp.json())
-  //   .then(owner => {
-  //     console.log(owner)
-  //     setOwners(owner)
-  //   })
-  // }, [])
-  
   return (
     <div className="App">
         <BrowserRouter>
           <AppWrapper>
-            <NavBar />
-            {/* <Switch > */}
-
+            <NavBarWrapper>
+            <NavBar user={user}/>
+            </NavBarWrapper>
               <Route exact path="/reviews">
-                 <Reviews />
-                 {/* addNewRev={addNewRev} reviews={reviews} handleDelete={DeleteReview} */}
+                <Reviews />
               </Route >
-
-              <Route exact path="/paymybill" component={BillPay} />
-
-              <Route exact path="/" component={Home} />
-              
-
-            {/* </Switch> */}
+              <Route exact path="/paymybill">
+                <BillPay />
+              </Route>
+              <Route exact path="/tos">
+                <TermsOfService />
+              </Route>
+              <Route exact path="/">
+                <Home />
+              </Route>
           </AppWrapper>
         </BrowserRouter>
     </div>
@@ -88,25 +55,26 @@ function App() {
             
   export default App;
 
-
-
-
 const AppWrapper = styled.div`
 background-color: #c0d6d8 ;
 top: 0%;
 bottom: 0%;
 left: 0%;
 right: 0%;
-position: absolute;
+position: flex;
 text-align: center;
 color: white;
+min-height: 100vh;
+min-width: 100vh;
 `
 
 const FooterWrapper = styled.footer`
 /* background-color: #282828; */
 background-color: #fff;
 bottom: 0;
+position: absolute;
 `
 const NavBarWrapper = styled.div`
   background-color: #2d7487;
+  padding: 20px;
 `

@@ -20,4 +20,6 @@ export default Description
 const PStyler = styled.p`
     color: black;
     font-size: 24px;
+    width: 300px;
+    margin: auto;
 `

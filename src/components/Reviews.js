@@ -3,49 +3,35 @@ import styled from "styled-components"
 import ReviewCard from "./ReviewCard"
 
 function Reviews(){
-    // reviews
-    // addNewRev
-    // { handleDelete}
-    // console.log(reviews)
     const [reviews, setReviews] = useState([])
 
       //post headers
-  const headers = {
-    Accepts: "application/json",
-    "Content-Type": "application/json",
-}     
-
+    const headers = {
+        Accepts: "application/json",
+        "Content-Type": "application/json",
+        }     
 
     //render the reviews
-  useEffect(()=>{
-    fetch("http://localhost:9292/reviews")
-    .then(resp=> resp.json())
-    .then(review => {
-        setReviews(review)})
-    },  []);
+    useEffect(()=>{
+        fetch("http://localhost:9292/reviews")
+        .then(resp=> resp.json())
+        .then(review => {
+            setReviews(review)})
+        },  []);
 
     // // post a new review to the backend
-  function addNewRev(review){
-    console.log("This is a review", review)
-    fetch("http://localhost:9292/reviews", {
-        method: 'POST',
-        body: JSON.stringify(review),
-        headers,
-    })
-    .then(resp=>resp.json())
-    
-    .then((newReview)=> {
-        // debugger
-        setReviews([...reviews, newReview])}
-        )
-}
+    function addNewRev(review){
+        fetch("http://localhost:9292/reviews", {
+            method: 'POST',
+            body: JSON.stringify(review),
+            headers,
+        })
+        .then(resp=>resp.json())
+        .then(newReview=> setReviews([...reviews, newReview]))
+    }
    
-     
     function handleCreate(synthRev){
         synthRev.preventDefault()
-        console.log("this log is in handlecreate", synthRev)
-
-        // console.log(e.target[2].value)
         const newRev = {
             rating: synthRev.target[0].value,
             comment: synthRev.target[1].value,
@@ -57,51 +43,43 @@ function Reviews(){
     }
 
     function DeleteReview(review){
-          console.log("this log is in delete method in app", review)
           fetch(`http://localhost:9292/reviews/${review.id}`, {
               method: "DELETE",
             })
-              // .then((r) => r.json())
-              // .then((deletedReview) => {
-                // console.log("the review that was deleted", deletedReview);
-                let reviewsRemaining = reviews.filter(eachReview=> eachReview.id !== review.id);
-                setReviews([...reviewsRemaining])
-          // })
+            let reviewsRemaining = reviews.filter(eachReview=> eachReview.id !== review.id);
+            setReviews([...reviewsRemaining])
         }
-
-    // function handleDeleteRev(reviewToDelete){
-    //     console.log("this log is from Reviews.js", reviewToDelete)
-    //     handleDelete(reviewToDelete)
-
-
-    // }
     
     //questions for Sam:
 // // how to pull cleaner name from his id
-// // how to put the submit values into a form to make a new comment
 //how to work git remote so we can both work at the same time
+
+//reach goals:
+//review card looks like 
 
     return (
         <>
-        <h1>Reviews!</h1>
-        <form onSubmit={handleCreate}>
-            <label>Rating:</label>
-            <input placeholder="Rating" name="rating" type="text"></input>
-            <br/>
-            <label>Comment:</label>
-            <input placeholder="Comment"></input>
-            <br />
-            {/* <label>Cleaner:</label>
-            <input placeholder="cleaner" name="cleaner" type="text"></input> */}
+        <h1>Reviews from our customers </h1>
+        <FormStyler>
+            <form onSubmit={handleCreate}>
+                <h1>Leave a review</h1>
+                <Label>Rating:</Label>
+                <Input placeholder="Rating" name="rating" type="text"></Input>
+                <br/>
+                <Label>Comment:</Label>
+                <Input placeholder="Comment"></Input>
+                <br />
+                {/* <label>Cleaner:</label>
+                <input placeholder="cleaner" name="cleaner" type="text"></input> */}
+                <Button  type="submit">Leave a review</Button>
+            </form> 
+        </FormStyler>
 
-        <button  type="submit">Leave a review</button>
-        </form> 
         {reviews.map(each_rev=>{
             return(
                 <CardStyler>
                     <ReviewCard map_rev={each_rev} handleDelete={DeleteReview} />
-                    {/* deleteSubmit={handleDeleteRev} */}
-                    </CardStyler>
+                </CardStyler>
             )
         })} 
         </>
@@ -111,11 +89,39 @@ function Reviews(){
 export default Reviews
 
 const CardStyler = styled.div`
-    background-color: grey;
+    background-color: #2d7487;
     border-style: solid;
-    width: 200px;
-    margin-left: 45%;
-    margin-top: 10px;
-    list-style-type:none
-
+    width: 225px;
+    margin-top: 50px;
+    list-style-type:none;
+    margin: auto;
+    margin-bottom: 30px;
 `
+const FormStyler=styled.div`
+    border-style: solid;
+    border-radius: 8px;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    height: 300px;
+    margin-bottom: 50px;
+`
+
+const Label = styled.label`
+    font-size: 30px;
+    color: black;
+    font-weight: 700;
+`
+
+const Input=styled.input`
+    font-size: 20px;
+    margin-left: 10px;
+`
+
+const Button = styled.button`
+    font-size: 15px;
+    border-radius: 8px;
+    background-color: lightgrey;
+    margin: 10px;
+    padding: 12px;
+    `

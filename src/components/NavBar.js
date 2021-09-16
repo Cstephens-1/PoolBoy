@@ -1,10 +1,35 @@
 import styled from "styled-components"
 import {Link} from "react-router-dom"
+import { useEffect, useState } from "react"
 
 
-function NavBar(){
+
+
+function NavBar({user}){
+
+    // console.log(user)
+
+
+    const [login, setLogin] = useState([false])
+
+      function toggleLogin(){
+    setLogin(!login)  
+}
+
+    
+
+  
+
+
+
+    //if state of login is false, then welcome message is login. 
+    //if state of login is true, then welcome message is welcome, user.
+
+    
     return (
         <>
+        {login ? <h3>Welcome</h3> : <h3>Login to continue</h3>}
+        
         <Link to="/">
             <Button>Home </Button>
         </Link>
@@ -19,7 +44,7 @@ function NavBar(){
         </Link>
 
         <Link to="/">
-        <Button>Logout</Button>
+        <Button onClick={toggleLogin}>{login? "Logout" : "Login"}</Button>
         </Link>
         </>
 
