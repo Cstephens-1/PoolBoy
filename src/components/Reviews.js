@@ -75,19 +75,19 @@ function Reviews(){
 
     return (
         <>
-        <h1>Reviews from our customers </h1>
+        <H1>Reviews from our customers </H1>
         <FormStyler>
             <form onSubmit={handleCreate}>
-                <h1>Leave a review</h1>
+                <H1>Leave us a review!</H1>
                 <Label>Rating:</Label>
                 <Input placeholder="Rating" name="rating" type="text"></Input>
                 <br/>
                 <Label>Comment:</Label>
                 <Input placeholder="Comment"></Input>
                 <br />
-                <label>
-                    Cleaner: <input value = {nameForCleaner} onChange={handleChange} />
-                </label>
+                <Label>
+                    Cleaner: <Input placeholder="Cleaner" value = {nameForCleaner} onChange={handleChange} />
+                </Label>
                 
             
                 <Button  type="submit">Leave a review</Button>
@@ -110,11 +110,12 @@ export default Reviews
 const CardStyler = styled.div`
     background-color: #2d7487;
     border-style: solid;
-    width: 225px;
+    width: 400px;
     margin-top: 50px;
     list-style-type:none;
     margin: auto;
     margin-bottom: 30px;
+    border-radius: 8px;
 `
 const FormStyler=styled.div`
     border-style: solid;
@@ -128,7 +129,7 @@ const FormStyler=styled.div`
 
 const Label = styled.label`
     font-size: 30px;
-    color: black;
+    color: #046489;
     font-weight: 700;
 `
 
@@ -138,9 +139,17 @@ const Input=styled.input`
 `
 
 const Button = styled.button`
-    font-size: 15px;
+    font-size: 20px;
     border-radius: 8px;
     background-color: lightgrey;
     margin: 10px;
     padding: 12px;
+    margin-top: 18px;
+    `
+
+    const H1 = styled.h1`
+        color: #046489
+;
+
+    
     `

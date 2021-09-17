@@ -7,6 +7,7 @@ import TermsOfService from './components/TermsOfService';
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/Home"
 import { useEffect, useState } from "react"
+import Footer from './components/Footer';
 
 
 

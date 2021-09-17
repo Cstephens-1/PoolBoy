@@ -10,21 +10,35 @@ function ReviewCard({map_rev, handleDelete}){
 
     
     return(
+    
         <li key={map_rev.id}>
-            <h2>{map_rev.rating}</h2>
-            <p>{map_rev.comment} </p>
-            <p>{map_rev.cleaner_name}</p>
+            <>
+            <H2>Rating: {map_rev.rating}</H2>
+            <br></br>
+            <H2>Comment: <br></br>{map_rev.comment} </H2>
+            <br></br>
+            <H2>Cleaner: {map_rev.cleaner_name}</H2>
             <Button onClick={deleteThisReview}>Delete</Button>
+            </>
         </li>
+
     )
 }
 
 export default ReviewCard
 
 const Button = styled.button`
-    font-size: px;
+    font-size: 20px;
     border-radius: 8px;
     background-color: lightgrey;
     margin: 25px;
     padding: 12px;
     `
+
+const H2 = styled.h2`
+    font-size: 25px;
+    margin-bottom: -2%;
+    margin-top: -1%;
+    line-height:35px;
+`
+
