@@ -5,9 +5,13 @@ import { useEffect, useState } from "react"
 
 
 
-function NavBar({user}){
+
+function NavBar({owner}){
 
     // console.log(user)
+    const [user, setUser]=useState({})
+
+    console.log(owner)
 
 
     const [login, setLogin] = useState([false])

@@ -11,7 +11,7 @@ function Footer(){
             <AboutSection>
                 <h2>About Us</h2>
                 <NavLink path="/">Schedule your next cleaning</NavLink>
-                {/* <NavLink path="/">Testimonials</NavLink> */}
+                
                 
                 <NavLink path="/">Investors</NavLink>
                 <NavLink path="/tos">TermsOfService</NavLink>
@@ -31,7 +31,7 @@ function Footer(){
             <h2>Social Media</h2>
                <NavLink path="/">FaceBook</NavLink>
                <NavLink path="/">Instagram</NavLink>
-               {/* <NavLink path="/">YouTube</NavLink> */}
+              
                <NavLink path="/">Twitter</NavLink>
             </SocialMediaSection>
 
@@ -56,6 +56,7 @@ const NavLink = styled(Link)`
         position: absolute;
          left: 0%;
         right: 0%;
+        /* margin-top: 15px; */
         /* bottom: 0%; */
     `
 

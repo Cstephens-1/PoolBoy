@@ -8,50 +8,55 @@ function BillPay(){
         <Balance>Your balance is:</Balance>
         <div>Please pay your balance before your next cleaning. We accept most major credit cards or check. </div>
         <IconContainer>
-        <FaIcons.FaCcVisa />
-        </IconContainer>
-        <IconContainer>
+            <CardContainer>
+                <FaIcons.FaCcVisa />
+            </CardContainer>
+        {/* </IconContainer>
+        <IconContainer> */}
+        <CardContainer>
         <FaIcons.FaCcMastercard />
-        </IconContainer>
-        <IconContainer>
+        </CardContainer>
+        {/* </IconContainer>
+        <IconContainer> */}
+        <CardContainer>
         <FaIcons.FaCcDiscover />
+        </CardContainer>
         </IconContainer>
 
-            <br></br>
-        <form>
-            <label>
-                Credit Card Number: 
-            <input placeholder=" Credit Card Number"/> 
-            </label>
+        <FormStyler>
+            <LabelMaker>
+                Card Number: 
+                    <InputStyler placeholder=" Credit Card Number"/> 
+            </LabelMaker>
 
             <br></br>
 
-            <label>
+            <LabelMaker>
                 Expiration:  
-            <input placeholder=" Exp. Date"/>
-            </label>
+            <InputStyler placeholder=" Exp. Date"/>
+            </LabelMaker>
 
             <br></br>
 
-        <label>
+        <LabelMaker>
             Security Code: 
-            <input placeholder=" CVV"/>
-            </label>
+            <InputStyler placeholder=" CVV"/>
+            </LabelMaker>
 
             <br></br>
 
-            <label>
+            <LabelMaker>
                 Amount:  
-            <input placeholder=" Amount"/>
-            </label>
+            <InputStyler placeholder=" Amount"/>
+            </LabelMaker>
 
-            <br></br>
+            {/* <br></br>
 
-            <br></br>
-            <button type="Submit">Pay</button>
+            <br></br> */}
+            <Button type="Submit">Pay</Button>
 
 
-        </form>
+        </FormStyler>
         </>
 
 
@@ -74,4 +79,46 @@ const Balance = styled.h3`
 const IconContainer = styled.div`
     margin: 5px;
     font-size: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`
+
+const CardContainer = styled.div`
+    margin: 8px;
+`
+
+const FormStyler = styled.form`
+    height: 500px;
+    border-style: solid;
+    border-color: #3a7587; 
+    width: 45%;
+    margin: auto;
+    align-content: center ;
+    display: inline-block;
+`
+
+const LabelMaker = styled.label`
+    color:black;
+    font-size: 25px;
+    float: right;
+    display: block;
+    position: relative;
+`
+
+const Button = styled.button`
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: lightgrey;
+    margin: 7px;
+    padding: 12px;
+`
+
+const InputStyler= styled.input`
+    margin-left: 10px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+    
+    
 `

@@ -4,6 +4,7 @@ import ReviewCard from "./ReviewCard"
 
 function Reviews(){
     const [reviews, setReviews] = useState([])
+    const [nameForCleaner, setNameForCleaner] = useState("")
 
       //post headers
     const headers = {
@@ -19,6 +20,13 @@ function Reviews(){
             setReviews(review)})
         },  []);
 
+
+        function getAllReviews(){
+            fetch("http://localhost:9292/reviews")
+        .then(resp=> resp.json())
+        .then(review => {
+            setReviews(review)})
+        }
     // // post a new review to the backend
     function addNewRev(review){
         fetch("http://localhost:9292/reviews", {
@@ -27,7 +35,7 @@ function Reviews(){
             headers,
         })
         .then(resp=>resp.json())
-        .then(newReview=> setReviews([...reviews, newReview]))
+        .then(newReview=> getAllReviews())
     }
    
     function handleCreate(synthRev){
@@ -37,7 +45,7 @@ function Reviews(){
             comment: synthRev.target[1].value,
             // owner_id: "",
             // pool_id: "",
-            // cleaner: e.target[2].value,
+            cleaner_id: synthRev.target[2].value,
         }
         addNewRev(newRev)
     }
@@ -49,6 +57,14 @@ function Reviews(){
             let reviewsRemaining = reviews.filter(eachReview=> eachReview.id !== review.id);
             setReviews([...reviewsRemaining])
         }
+
+    function handleChange(synthEvent){
+        console.log(synthEvent.target.value)
+        if (synthEvent.target.value === "Sam" || synthEvent.target.value === "Joe" ){
+        }
+        setNameForCleaner(synthEvent.target.value)
+        
+    }
     
     //questions for Sam:
 // // how to pull cleaner name from his id
@@ -69,8 +85,11 @@ function Reviews(){
                 <Label>Comment:</Label>
                 <Input placeholder="Comment"></Input>
                 <br />
-                {/* <label>Cleaner:</label>
-                <input placeholder="cleaner" name="cleaner" type="text"></input> */}
+                <label>
+                    Cleaner: <input value = {nameForCleaner} onChange={handleChange} />
+                </label>
+                
+            
                 <Button  type="submit">Leave a review</Button>
             </form> 
         </FormStyler>

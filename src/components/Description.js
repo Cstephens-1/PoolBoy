@@ -18,8 +18,16 @@ function Description(){
 export default Description
 
 const PStyler = styled.p`
-    color: black;
+    color: #3a7587;
     font-size: 24px;
-    width: 300px;
+    width: 500px;
     margin: auto;
+    z-index: 1;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-style: solid;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    
+    
 `

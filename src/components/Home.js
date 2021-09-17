@@ -7,16 +7,20 @@ import Video from "./Video"
 
 function Home(){
     return(
-        <div>
-            <Video />
+  
+        <Div>
             <H1>PoolBoy</H1>
             <IconContainer>
             <FaIcons.FaSwimmingPool />
             </IconContainer>
-            <Description />
+            <Video />
+        <Description />
+        <Footer />
             
-            <Footer />
-        </div>
+            
+            
+        </Div>
+            
     )
 }
 
@@ -27,9 +31,14 @@ const IconContainer = styled.div`
     margin: 5px;
     font-size: 300px;
     margin-top: -3%;
+    margin-bottom: -3%;
 `
 
 const H1 = styled.h1`
     font-size: 100px;
+    margin-bottom: -2%;
+    margin-top: -1%;
 `
-
+const Div = styled.div`
+    margin-bottom: 15px;
+`
