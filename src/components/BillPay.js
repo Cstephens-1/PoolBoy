@@ -119,13 +119,16 @@ const Button = styled.button`
     font-size: 20px;
     border-radius: 8px;
     background-color: lightgrey;
-    margin: 7px;
+    margin-left: 390px;
     padding: 12px;
+    margin-top: 25px;
+
 `
 
 const InputStyler= styled.input`
     margin-left: -50px;
     margin-right: 150px;
+    
     /* margin-top: 25px; */
     height: 20px;
     position: relative; 

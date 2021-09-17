@@ -38,6 +38,8 @@ const H1 = styled.h1`
     font-size: 100px;
     margin-bottom: -2%;
     margin-top: -1%;
+    padding-top: 20px;
+    padding-bottom: 25px;
 `
 const Div = styled.div`
     margin-bottom: 15px;

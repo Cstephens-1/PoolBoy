@@ -14,7 +14,7 @@ function Footer(){
                 
                 
                 <NavLink path="/">Investors</NavLink>
-                <NavLink path="/tos">TermsOfService</NavLink>
+                <NavLink to="/tos">TermsOfService</NavLink>
             </AboutSection>
         
          

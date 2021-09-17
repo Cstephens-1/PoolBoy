@@ -48,6 +48,15 @@ function Reviews(){
             cleaner_id: synthRev.target[2].value,
         }
         addNewRev(newRev)
+        synthRev.target[0].value = ""
+        synthRev.target[1].value = ""
+        // if (synthRev.target[2].value !== null){
+
+        //     synthRev.target[2].value = ""
+        // }
+
+        
+
     }
 
     function DeleteReview(review){
@@ -92,6 +101,8 @@ function Reviews(){
             
                 <Button  type="submit">Leave a review</Button>
             </form> 
+
+            
         </FormStyler>
 
         {reviews.map(each_rev=>{
